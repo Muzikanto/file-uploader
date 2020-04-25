@@ -34,14 +34,14 @@ yarn add @muzikanto/file-uploader
 function Component() {
     return (
         <FileUploader
-            // files={lFiles}
-            // onChange={list => setFiles(list)}
+            // files={files}
+            // onChange={nextFiles => setFiles(nextFiles)}
             onChange={console.log}
             multiple
             accept={['image/jpeg', 'image/png']}
             maxSize={1024 * 100}
             onErrors={console.log}
-            validate={el => el.name.indexOf('.pdf') != -1 ? 'custom error not pdf' : undefined}
+            validate={el => el.name.indexOf('.pdf') != -1 ? 'custom error' : undefined}
         >
             {
                 ({onClick, files, change, dragged, onDragEnter, onDragLeave, onDragOver, onDrop}) => {
