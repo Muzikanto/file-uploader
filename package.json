@@ -1,6 +1,6 @@
 {
     "name": "@muzikanto/file-uploader",
-    "version": "1.0.9",
+    "version": "1.0.0",
     "description": "react file uploader",
     "license": "MIT",
     "main": "./index.js",
