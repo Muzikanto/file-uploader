@@ -14,11 +14,9 @@
 
 <!-- /TOC -->
 
-![](https://github.com/Muzikanto/picture/blob/master/picture.gif?raw=true)
-
 ## Introduction
 
-Peer dependencies: `react`, `react-dom`,
+Peer dependencies: `react`, `react-dom`, `@types/react`
  
 ## Installation
 
@@ -33,53 +31,57 @@ yarn add @muzikanto/file-uploader
 [Example in storybook](https://muzikanto.github.io/file-uploader)
 
 ```typescript jsx
-<FileUploader
-    // files={lFiles}
-    // onChange={list => setFiles(list)}
-    onChange={console.log}
-    multiple
-    accept={['image/jpeg', 'image/png']}
-    maxSize={1024 * 100}
-    onErrors={console.log}
-    validate={el => el.name.indexOf('.pdf') != -1 ? 'custom error not pdf' : undefined}
->
-    {
-        ({onClick, files, change, dragged, onDragEnter, onDragLeave, onDragOver, onDrop}) => {
-            return (
-                <>
-                    <div
-                        style={dragged ? { border: 'dashed 1px black'} : undefined}
-                        onClick={onClick}
-                        onDragEnter={onDragEnter}
-                        onDragOver={onDragOver}
-                        onDragLeave={onDragLeave}
-                        onDrop={onDrop}
-                    >
-                        Drag & Drop your files or Browse
-                    </div>
-                    {
-                        files.map(({file, error, success}, i) => {
-                            return (
-                                <>
-                                  <span
-                                       key={'file-' + i}
-                                       style={{backgroundColor: success ? 'green' : 'red'}}
-                                   >
-                                    {file.name} ({file.size})
-                                  </span>  
-                                  {
-                                      error &&
-                                      <span>{error}</span>
-                                  }
-                                </>
-                            );
-                        })
-                    }
-                </>
-            )
-        }
-    }
-</FileUploader>
+function Component() {
+    return (
+        <FileUploader
+            // files={lFiles}
+            // onChange={list => setFiles(list)}
+            onChange={console.log}
+            multiple
+            accept={['image/jpeg', 'image/png']}
+            maxSize={1024 * 100}
+            onErrors={console.log}
+            validate={el => el.name.indexOf('.pdf') != -1 ? 'custom error not pdf' : undefined}
+        >
+            {
+                ({onClick, files, change, dragged, onDragEnter, onDragLeave, onDragOver, onDrop}) => {
+                    return (
+                        <>
+                            <div
+                                style={dragged ? { border: 'dashed 1px black'} : undefined}
+                                onClick={onClick}
+                                onDragEnter={onDragEnter}
+                                onDragOver={onDragOver}
+                                onDragLeave={onDragLeave}
+                                onDrop={onDrop}
+                            >
+                                Drag & Drop your files or Browse
+                            </div>
+                            {
+                                files.map(({file, error, success}, i) => {
+                                    return (
+                                        <>
+                                          <span
+                                               key={'file-' + i}
+                                               style={{backgroundColor: success ? 'green' : 'red'}}
+                                           >
+                                            {file.name} ({file.size})
+                                          </span>  
+                                          {
+                                              error &&
+                                              <span>{error}</span>
+                                          }
+                                        </>
+                                    );
+                                })
+                            }
+                        </>
+                    )
+                }
+            }
+        </FileUploader>
+    );
+}
 ```
 
 ## License
