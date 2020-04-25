@@ -7,7 +7,7 @@
     "typings": "./index.d.ts",
     "scripts": {
         "start": "start-storybook -p 5001",
-        "build:stories": "build-storybook -o docs",
+        "build:docs": "build-storybook -o docs",
         "build:components": "tsc -b",
         "clean": "rm -rf *.ts && rm -rf *.tsx && rm -rf *.js",
         "build": "npm run clean && tsc -b",
@@ -39,9 +39,9 @@
     },
     "dependencies": {},
     "devDependencies": {
-        "@material-ui/core": "4.9.2",
+        "@material-ui/core": "4.9.10",
         "@material-ui/icons": "4.9.1",
-        "@material-ui/styles": "4.9.0",
+        "@material-ui/styles": "4.9.10",
         "babel-preset-react-app": "^9.1.2",
         "babel-loader": "8.0.6",
         "storybook-dep-webpack-plugin": "1.0.3",

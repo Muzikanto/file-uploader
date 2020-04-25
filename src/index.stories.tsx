@@ -10,6 +10,7 @@ import makeStyles from "@material-ui/core/styles/makeStyles";
 import clsx from 'clsx';
 import {Theme} from "@material-ui/core";
 import {CheckCircleOutlineOutlined, ErrorOutlineOutlined} from "@material-ui/icons";
+import {array, boolean, number, text} from "@storybook/addon-knobs";
 
 const useStyles = makeStyles((theme: Theme) => ({
     file: {
@@ -62,11 +63,20 @@ export function FileUploader() {
             // files={lFiles}
             // onChange={list => setFiles(list)}
             onChange={console.log}
-            multiple
-            accept={['image/jpeg', 'image/png']}
-            maxSize={1024 * 100}
+            multiple={boolean('multiple', true)}
+            reset={boolean('reset', false)}
+            validateErrors={{
+                notAccept: text('error-notAccept', 'Not accepted format'),
+                maxSize: text('error-maxSize', 'File size is to large'),
+            }}
+            accept={array('accept', ['image/jpeg', 'image/png'])}
+            maxSize={number('maxSize', 1024 * 100)}
             onErrors={console.log}
-            validate={el => el.name.indexOf('.pdf') != -1 ? 'custom error not pdf' : undefined}
+            validate={
+                boolean('customValidate', true) ?
+                    (el => el.name.indexOf('.pdf') != -1 ? 'custom error' : undefined) :
+                undefined
+            }
         >
             {
                 ({onClick, files, change, dragged, onDragEnter, onDragLeave, onDragOver, onDrop}) => {
